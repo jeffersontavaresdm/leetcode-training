@@ -46,7 +46,7 @@ public class TwoSum {
                 throw new RuntimeException("invalid value");
             }
 
-            // ...
+            //...
         }
 
         return result;

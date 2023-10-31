@@ -40,13 +40,20 @@ public class TwoSum {
             throw new RuntimeException("invalid vector length");
         }
 
-        var result = new int[] {};
+        // [1, 2, 3, 4, 5] -> 5
+        var result = new int[] {0, 0};
         for (int i = 0; i < nums.length; i++) {
-            if (valueIsNotValid(nums[i]) || valueIsNotValid(target)) {
-                throw new RuntimeException("invalid value");
-            }
+            for (int j = 1; j < nums.length; j++) {
+                if (valueIsNotValid(nums[i]) || valueIsNotValid(nums[j]) || valueIsNotValid(target)) {
+                    throw new RuntimeException("value is not valid");
+                }
 
-            //...
+                if (nums[i] + nums[j] == target) {
+                    result[0] = i;
+                    result[1] = j;
+                    return result;
+                }
+            }
         }
 
         return result;

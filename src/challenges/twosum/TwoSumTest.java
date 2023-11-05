@@ -1,4 +1,4 @@
-package challenges;
+package challenges.twosum;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -57,6 +57,17 @@ class TwoSumTest {
     void mustReturnTheIndicesThatTogetherAreEqualToTheTargetValue_test03() {
         var nums = new int[] {3, 3};
         var target = 6;
+        var expected = new int[] {0, 1};
+
+        var result = TwoSum.twoSum(nums, target);
+
+        Assertions.assertEquals(Arrays.toString(expected), Arrays.toString(result));
+    }
+
+    @Test
+    void test() {
+        var nums = new int[] {2222222,2222222};
+        var target = 4444444;
         var expected = new int[] {0, 1};
 
         var result = TwoSum.twoSum(nums, target);

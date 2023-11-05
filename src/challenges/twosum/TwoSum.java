@@ -1,4 +1,7 @@
-package challenges;
+package challenges.twosum;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
@@ -36,27 +39,25 @@ package challenges;
 public class TwoSum {
 
     public static int[] twoSum(int[] nums, int target) {
-        if (!(lengthIsValid(nums))) {
-            throw new RuntimeException("invalid vector length");
-        }
+        if (lengthIsValid(nums) && !valueIsNotValid(target)) {
+            Map<Integer, Integer> seen = new HashMap<>();
 
-        // [1, 2, 3, 4, 5] -> 5
-        var result = new int[] {0, 0};
-        for (int i = 0; i < nums.length; i++) {
-            for (int j = 1; j < nums.length; j++) {
-                if (valueIsNotValid(nums[i]) || valueIsNotValid(nums[j]) || valueIsNotValid(target)) {
-                    throw new RuntimeException("value is not valid");
+            for (int i = 0; i < nums.length; i++) {
+                if (valueIsNotValid(nums[i])) {
+                    throw new IllegalArgumentException("No valid value");
                 }
 
-                if (nums[i] + nums[j] == target) {
-                    result[0] = i;
-                    result[1] = j;
-                    return result;
+                int complement = target - nums[i];
+
+                if (seen.containsKey(complement)) {
+                    return new int[] {seen.get(complement), i};
                 }
+
+                seen.put(nums[i], i);
             }
         }
 
-        return result;
+        throw new IllegalArgumentException("Error because invalid array length or invalid target value");
     }
 
     private static boolean lengthIsValid(int[] nums) {

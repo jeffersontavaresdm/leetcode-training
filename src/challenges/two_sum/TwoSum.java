@@ -1,4 +1,4 @@
-package challenges.twosum;
+package challenges.two_sum;
 
 import java.util.HashMap;
 import java.util.Map;

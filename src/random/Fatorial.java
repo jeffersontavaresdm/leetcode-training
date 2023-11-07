@@ -1,4 +1,4 @@
-package challenges.zrandom;
+package random;
 
 public class Fatorial {
 
